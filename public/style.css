@@ -1,0 +1,157 @@
+/* TODO: make it look awesome. */
+
+* {
+  margin: 10;
+  padding: 10;
+  box-sizing: border-box;
+}
+h3 {
+  padding-top: 8px;
+}
+
+/* Body styles */
+body {
+  background-color: #f2f2f2;
+  font-family: Helvetica;
+  font-size: 16px;
+  border: 15px;
+}
+
+/* Header styles */
+header {
+  background-color: #333;
+  color: rgb(20, 14, 14);
+  padding: 10px;
+  text-align: center;
+}
+
+/* Course dropdown styles */
+select {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  color: black;
+
+  margin-bottom: 5px;
+}
+label {
+  padding: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  display: none;
+}
+
+/* Student ID input field styles */
+input[type='text'] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+}
+
+ul {
+  margin: 2px;
+  padding-bottom: 4px;
+  list-style-type: none;
+}
+
+/* .log-entries li {
+  margin: 5px;
+} */
+.log-entries li::before {
+  content: '';
+  display: none;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #999;
+}
+
+.log-entries li:hover::before {
+  background-color: #333;
+}
+
+.log-entries li pre.active {
+  display: block;
+}
+
+/*Keep pre tag data invisible by default*/
+.log-entries li pre {
+  display: none;
+  padding: 4px;
+  margin: 0px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  inline-size: auto;
+  white-space: pre-wrap;
+  font-family: Helvetica;
+}
+
+/* log date */
+.log-entries div {
+  font-weight: lighter;
+  padding-bottom: 6px;
+  padding-top: 8px;
+}
+
+/* Log entries styles */
+.log-entries {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 20px;
+  inline-size: auto;
+}
+
+/* New log entry form styles */
+form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+/* Form input styles */
+form input[type='text'],
+form textarea {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Form button styles */
+form input[type='submit'] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-message {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid red;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
+/* TODO: make it responsive. */
+@media only screen and (min-width: 768px) {
+  /* Styles for tablets and larger screens */
+  body {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* Styles for desktop screens */
+  body {
+    font-size: 20px;
+  }
+}
