@@ -12,11 +12,111 @@
       type="image/x-icon"
     />
     <!-- TODO: Load your CSS file -->
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Tailwind classes for universal styles */
+      .uni {
+         @apply m-10 p-10 box-border;
+      }
+      h3 {
+        padding-top: 8px;
+      }
+      /* Body styles */
+      body {
+         @apply items-center max-w-sm mx-auto border-gray-200 font-helvetica text-base border-15 m-10 p-10 box-border;
+      }
+      /* Header styles */
+      header {
+        @apply bg-gray-900 text-white text-center p-2.5;
+      }
+      /* Course dropdown styles */
+      select {
+        @apply bg-white border border-gray-400 p-4 w-full text-black mb-5;
+      }
+      label {
+        p-5 pb-10 mb-30 hidden;
+      }
+      /* Student ID input field styles */
+      input[type='text'] {
+        @apply bg-white border-2 border-gray-400 p-2.5 w-full;
+      }
+      ul {
+        m-2 pb-4 list-none;
+      }
+      /* .log-entries li {
+        margin: 5px;
+      } */
+      .log-entries li::before {
+        @apply hidden w-10 h-10 mr-10 rounded-full bg-gray-600;
+      }
+      .log-entries li:hover::before {
+        @apply bg-gray-900;
+      }
+      .log-entries li pre.active {
+        @apply block p-4 m-0 bg-gray-100 rounded border border-gray-300;
+      }
+      /*Keep pre tag data invisible by default*/
+      .log-entries li pre {
+        @apply hidden;
+      }
+      /* log date */
+      .log-entries div {
+        @apply font-light pb-6 pt-8;
+      }
+      /* Log entries styles */
+      .log-entries {
+        @apply bg-white border border-gray-400 mb-20 p-20;
+      }
+      /* New log entry form styles */
+      form {
+        @apply bg-white border border-gray-400 p-20;
+      }
+      /* Form input styles */
+      form input[type='text'],
+      form textarea {
+        @apply bg-gray-200 border border-gray-400 mb-10 p-4 w-full;
+      }
+      /* Form button styles */
+      form input[type='submit'] {
+        @apply bg-gray-900 text-white p-2 rounded cursor-pointer;
+      }
+      .error-message {
+        @apply p-2 m-2 border-2 border-red-500 font-bold text-center text-black;
+      }
+
+      .hidden {
+        display: none;
+      }      
+      /* TODO: make it responsive. */
+      @media only screen and (min-width: 768px) {
+        /* Styles for tablets and larger screens */
+        body {
+          font-size: 18px;
+        }
+      }
+      @media only screen and (min-width: 1024px) {
+        /* Styles for desktop screens */
+        body {
+          font-size: 20px;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <form>
+  <body
+    class="
+      border-gray-200
+      font-helvetica
+      text-base
+      border-10
+      m-5
+      p-5
+      box-border
+    "
+  >
+    <form class="bg-white border border-gray-400 p-20">
       <select
+        class="bg-white border border-gray-400 p-4 w-full text-black mb-5"
         aria-label="Select Course"
         id="course"
         name="course"
@@ -43,10 +143,17 @@
       <input type="text" id="uvuId" name="uvuId" data-cy="uvuId_input" />
       <!-- TODO: The following options are currently static values to show you an example.  -->
       <!-- You must replace them with dynamic data by ajaxing GET https://json-server-ft3qa5--3000.local.webcontainer.io/logs?courseId=<courseID>&uvuId=<uvuID> -->
-      <h3 id="uvuIdDisplay" data-cy="uvuIdDisplay">
+      <h3 class="pt-8" id="uvuIdDisplay" data-cy="uvuIdDisplay">
         Student Logs for 10234567
       </h3>
       <ul class="log-entries" data-cy="logs">
+        <li class="">
+          <div class="font-light text-gray-500 pb-6 pt-8">
+            <small></small>
+          </div>
+          <pre><p></p></pre>
+        </li>
+
         <!-- TODO: Click anywhere on the log to toggle visibility of the log (text only, not the date)-->
         <!-- <li>
           <div><small>1/23/2021 1:23:36 PM</small></div>
@@ -63,13 +170,16 @@
       </ul>
       <label>New Log</label><br />
       <textarea
+        class="bg-gray-200 border border-gray-300 mb-10 p-10 w-full"
         style="height: 75px"
         aria-label="add log textarea"
         data-cy="log_textarea"
       ></textarea
       ><br />
       <!-- TODO: Button should be disabled until there are logs displayed -->
-      <button id="addLog" type="submit" data-cy="add_log_btn">Add Log</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="addLog" type="submit" data-cy="add_log_btn">
+        Add Log
+      </button class="btn btn-blue">
     </form>
     <!-- TODO: Script tag to your javascript file -->
     <script src="script.js"></script>
