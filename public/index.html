@@ -12,19 +12,23 @@
       type="image/x-icon"
     />
     <!-- TODO: Load your CSS file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
       /* Tailwind classes for universal styles */
       .uni {
-         @apply m-10 p-10 box-border;
+         m-10 p-10 box-border;
       }
       h3 {
         padding-top: 8px;
       }
       /* Body styles */
       body {
-         @apply items-center max-w-sm mx-auto border-gray-200 font-helvetica text-base border-15 m-10 p-10 box-border;
+          items-center max-w-sm mx-auto border-gray-200 font-helvetica text-base border-15 m-10 p-10 box-border;
       }
       /* Header styles */
       header {
@@ -87,7 +91,7 @@
 
       .hidden {
         display: none;
-      }      
+      }
       /* TODO: make it responsive. */
       @media only screen and (min-width: 768px) {
         /* Styles for tablets and larger screens */
@@ -109,8 +113,8 @@
       font-helvetica
       text-base
       border-10
-      m-5
-      p-5
+      m-10
+      p-10
       box-border
     "
   >
@@ -135,23 +139,29 @@
 
       <!-- TODO: Don't show the uvu id text input box until a course was selected above.  -->
       <!-- TODO: If course ever becomes unselected, don't show the uvu id text input box.  -->
-      <label for="uvuId">UVU ID</label><br />
+      <label id="uvuIdLbl" for="uvuId">UVU ID</label><br />
       <!-- TODO: write `10234567` as sample data on the input field below :  -->
       <!-- TODO: Ensure the character length never exceeds 8  -->
       <!-- TODO: Only numbers, no letters or other characters: -->
       <!-- TODO: When character length reaches 8 and it's only digits, fire off ajax request, if 200 or 304, display results, else appropriately guide the user. -->
-      <input type="text" id="uvuId" name="uvuId" data-cy="uvuId_input" />
+      <input
+        class="bg-white border-2 border-gray-400 p-2.5 pb-4 mb-5 w-full"
+        type="text"
+        id="uvuId"
+        name="uvuId"
+        data-cy="uvuId_input"
+      />
       <!-- TODO: The following options are currently static values to show you an example.  -->
       <!-- You must replace them with dynamic data by ajaxing GET https://json-server-ft3qa5--3000.local.webcontainer.io/logs?courseId=<courseID>&uvuId=<uvuID> -->
-      <h3 class="pt-8" id="uvuIdDisplay" data-cy="uvuIdDisplay">
+      <h3 class="d-none" id="uvuIdDisplay" data-cy="uvuIdDisplay">
         Student Logs for 10234567
       </h3>
-      <ul class="log-entries" data-cy="logs">
-        <li class="">
-          <div class="font-light text-gray-500 pb-6 pt-8">
-            <small></small>
+      <ul class="log-entries py-2" id="logs" data-cy="logs">
+        <li>
+          <div>
+            <small class="dateDiv"></small>
           </div>
-          <pre><p></p></pre>
+          <pre><p id='entryP'></p></pre>
         </li>
 
         <!-- TODO: Click anywhere on the log to toggle visibility of the log (text only, not the date)-->
@@ -168,18 +178,32 @@
           <pre><p>Atlas is up and running</p></pre>
         </li> -->
       </ul>
-      <label>New Log</label><br />
+      <label class="font-medium">New Log</label><br />
       <textarea
-        class="bg-gray-200 border border-gray-300 mb-10 p-10 w-full"
+        class="bg-gray-200 border border-gray-300 mb-2 p-10 w-full"
         style="height: 75px"
         aria-label="add log textarea"
         data-cy="log_textarea"
       ></textarea
       ><br />
       <!-- TODO: Button should be disabled until there are logs displayed -->
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="addLog" type="submit" data-cy="add_log_btn">
+      <button
+        class="
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          px-4
+          rounded
+          focus:outline-none
+        "
+        id="addLog"
+        type="submit"
+        data-cy="add_log_btn"
+      >
         Add Log
-      </button class="btn btn-blue">
+      </button>
     </form>
     <!-- TODO: Script tag to your javascript file -->
     <script src="script.js"></script>

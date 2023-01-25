@@ -141,6 +141,17 @@ form input[type='submit'] {
   text-align: center;
 }
 
+.custom-button {
+  @apply bg-blue-500 text-white font-bold;
+  @apply bg-blue-500
+  hover:bg-blue-700
+  text-white
+  font-bold
+  py-2
+  px-4
+  rounded;
+}
+
 /* TODO: make it responsive. */
 @media only screen and (min-width: 768px) {
   /* Styles for tablets and larger screens */
