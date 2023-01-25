@@ -17,98 +17,19 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      /* Tailwind classes for universal styles */
-      .uni {
-         m-10 p-10 box-border;
-      }
-      h3 {
-        padding-top: 8px;
-      }
-      /* Body styles */
-      body {
-          items-center max-w-sm mx-auto border-gray-200 font-helvetica text-base border-15 m-10 p-10 box-border;
-      }
-      /* Header styles */
-      header {
-        @apply bg-gray-900 text-white text-center p-2.5;
-      }
-      /* Course dropdown styles */
-      select {
-        @apply bg-white border border-gray-400 p-4 w-full text-black mb-5;
-      }
-      label {
-        p-5 pb-10 mb-30 hidden;
-      }
-      /* Student ID input field styles */
-      input[type='text'] {
-        @apply bg-white border-2 border-gray-400 p-2.5 w-full;
-      }
-      ul {
-        m-2 pb-4 list-none;
-      }
-      /* .log-entries li {
-        margin: 5px;
-      } */
-      .log-entries li::before {
-        @apply hidden w-10 h-10 mr-10 rounded-full bg-gray-600;
-      }
-      .log-entries li:hover::before {
-        @apply bg-gray-900;
-      }
-      .log-entries li pre.active {
-        @apply block p-4 m-0 bg-gray-100 rounded border border-gray-300;
-      }
-      /*Keep pre tag data invisible by default*/
-      .log-entries li pre {
-        @apply hidden;
-      }
-      /* log date */
-      .log-entries div {
-        @apply font-light pb-6 pt-8;
-      }
-      /* Log entries styles */
-      .log-entries {
-        @apply bg-white border border-gray-400 mb-20 p-20;
-      }
-      /* New log entry form styles */
-      form {
-        @apply bg-white border border-gray-400 p-20;
-      }
-      /* Form input styles */
-      form input[type='text'],
-      form textarea {
-        @apply bg-gray-200 border border-gray-400 mb-10 p-4 w-full;
-      }
-      /* Form button styles */
-      form input[type='submit'] {
-        @apply bg-gray-900 text-white p-2 rounded cursor-pointer;
-      }
-      .error-message {
-        @apply p-2 m-2 border-2 border-red-500 font-bold text-center text-black;
-      }
-
-      .hidden {
-        display: none;
-      }
-      /* TODO: make it responsive. */
-      @media only screen and (min-width: 768px) {
-        /* Styles for tablets and larger screens */
-        body {
-          font-size: 18px;
-        }
-      }
-      @media only screen and (min-width: 1024px) {
-        /* Styles for desktop screens */
-        body {
-          font-size: 20px;
-        }
-      }
-    </style>
   </head>
   <body
     class="
+      rounded
+      max-w-md
+      mx-auto
+      rounded-xl
+      shadow-md
+      overflow-hidden
+      md:max-w-2xl
+      bg-gradient-to-t
+      from-blue-500
+      to-transparent
       border-gray-200
       font-helvetica
       text-base
@@ -118,9 +39,9 @@
       box-border
     "
   >
-    <form class="bg-white border border-gray-400 p-20">
+    <form class="text-centered rounded bg-white border border-gray-400 p-12">
       <select
-        class="bg-white border border-gray-400 p-4 w-full text-black mb-5"
+        class="bg-white border border-gray-400 p-4 w-full text-black mb-3"
         aria-label="Select Course"
         id="course"
         name="course"
@@ -139,13 +60,13 @@
 
       <!-- TODO: Don't show the uvu id text input box until a course was selected above.  -->
       <!-- TODO: If course ever becomes unselected, don't show the uvu id text input box.  -->
-      <label id="uvuIdLbl" for="uvuId">UVU ID</label><br />
+      <label class="font-medium" id="uvuIdLbl" for="uvuId">UVU ID</label><br />
       <!-- TODO: write `10234567` as sample data on the input field below :  -->
       <!-- TODO: Ensure the character length never exceeds 8  -->
       <!-- TODO: Only numbers, no letters or other characters: -->
       <!-- TODO: When character length reaches 8 and it's only digits, fire off ajax request, if 200 or 304, display results, else appropriately guide the user. -->
       <input
-        class="bg-white border-2 border-gray-400 p-2.5 pb-4 mb-5 w-full"
+        class="rounded bg-white border-2 border-gray-400 p-2.5 pb-4 mb-3 w-full"
         type="text"
         id="uvuId"
         name="uvuId"
@@ -156,12 +77,12 @@
       <h3 class="d-none" id="uvuIdDisplay" data-cy="uvuIdDisplay">
         Student Logs for 10234567
       </h3>
-      <ul class="log-entries py-2" id="logs" data-cy="logs">
-        <li>
+      <ul class="rounded log-entries mb-4 py-2" id="logs" data-cy="logs">
+        <!-- <li>
           <div>
             <small class="dateDiv"></small>
           </div>
-          <pre><p id='entryP'></p></pre>
+          <pre><p id='entryP'></p></pre> -->
         </li>
 
         <!-- TODO: Click anywhere on the log to toggle visibility of the log (text only, not the date)-->
@@ -180,7 +101,7 @@
       </ul>
       <label class="font-medium">New Log</label><br />
       <textarea
-        class="bg-gray-200 border border-gray-300 mb-2 p-10 w-full"
+        class="rounded bg-gray-200 border border-gray-300 mb-1 p-10 w-full"
         style="height: 75px"
         aria-label="add log textarea"
         data-cy="log_textarea"

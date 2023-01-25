@@ -7,6 +7,7 @@ $(document).ready(function () {
   $('#addLog').prop('disabled', true).addClass('opacity-20 cursor-not-allowed');
 
   // styling for ul log entry box and containers
+  $('select').addClass('rounded');
 
   // Make UVU ID visible only after course selection has been made
   $('#uvuId').hide();
@@ -125,13 +126,13 @@ $(document).ready(function () {
               'p-2 bg-gray-100 border-2 border-solid block'
             );
             $('.log-entries li').addClass(
-              'p-2 bg-gray-100 border-2 border-solid block'
+              'rounded p-2 bg-gray-100 border-2 border-solid block'
             );
             $('div small').addClass(
-              'text-base font-medium font-sans border-x-gray-300'
+              'rounded text-base font-medium font-sans border-x-gray-300'
             );
             $('pre').addClass(
-              'font-sans border-solid border-inherit whitespace-pre-wrap'
+              'rounded font-sans border-solid border-inherit whitespace-pre-wrap'
             );
 
             // re-activate addLog button
@@ -157,7 +158,7 @@ $(document).ready(function () {
           // Create a Div to set our warning within
           var errorDiv = $('<div>')
             .addClass(
-              'border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'
+              'font-bold border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'
             )
             .text(error.message);
           // Append the error message to the body of the document
