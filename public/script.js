@@ -1,8 +1,46 @@
 /* Disable Add Log button until logs are displayed */
-// Get the button
+
+// let $ = (sel) => {
+//   let els = [...document.querySelectorAll(sel)];
+
+//   return {
+//     css: (propName, value) => {
+//       els.forEach((el) => (el.style[propName] = value));
+//     },
+
+//     toggle: () => {
+//       alert('toggle');
+
+//       els.forEach((el) => el); //does nothing; placeholder
+
+//       //TODO if showing, hide
+
+//       //TODO if hidden, show
+//     },
+
+//     click: (callBackFn) => {
+//       els.forEach(callBackFn); //does nothing; placeholder
+
+//       //TODO assign the click event the selected elements
+//     },
+//   };
+// };
+
+// function exampleUsage() {
+//   $('h1').css('color', 'red');
+
+//   $('h2').css('color', 'green');
+
+//   $('#second').toggle();
+
+//   $('div').toggle();
+
+//   $('.log').click(() => alert('click')); //alert callback is a form of stubbing
+// }
+
+// exampleUsage();
 
 $(document).ready(function () {
-  // disable add log button
   // Disable Add Log button until logs are displayed
   $('#addLog').prop('disabled', true).addClass('opacity-20 cursor-not-allowed');
 
@@ -106,7 +144,6 @@ $(document).ready(function () {
               const logItem = $(`<li>`);
 
               // Create the log date element
-
               const logDate = $(`<div><small>${log.date}</small></div>`);
               $('small').addClass(
                 'text-lg font-semibold font-sans border-x-gray-300'
@@ -121,6 +158,7 @@ $(document).ready(function () {
               // Append the list item to the log entries container
               logEntries.append(logItem);
             });
+
             // add css classes to new elements
             $('.log-entries').addClass(
               'p-2 bg-gray-100 border-2 border-solid block'
@@ -169,12 +207,110 @@ $(document).ready(function () {
           }, 5000);
         });
     }
+
+    // post
+    // construct log entry object
+    $('#addLog').click(function () {
+      const textareaInput = $('#logEntry').val();
+      if (!textareaInput) {
+        // Exit the function if textarea is empty
+        return;
+      }
+
+      // create entry
+      const entry = {
+        courseId: $('#course').val(),
+        uvuId: $('#uvuId').val(),
+        date: new Date().toLocaleString(),
+        text: textareaInput,
+        id: Math.random().toString(36).substring(2, 9),
+      };
+
+      // Do something with the input (e.g. send it to a server via Axios)
+      // Send the POST request, GEt to repopulate log entry list
+      axios
+        .post(
+          'https://jsonserverpazgcu-umxz--3000.local-credentialless.webcontainer.io/api/v1/logs',
+          entry
+        )
+        .then((data) => {
+          console.log(data);
+          //const courseId = $('#course').val();
+          const courseId = $('#course').val();
+          const uvuId = event.target.value;
+
+          axios
+            .get(
+              `
+          https://jsonserverpazgcu-umxz--3000.local-credentialless.webcontainer.io/api/v1/logs?courseId=${courseId}&uvuId=${uvuId}`
+            )
+            .then((response) => {
+              return response.data;
+            })
+            .then((data) => {
+              // Display results
+              console.log(data);
+              // Get the log entries container
+              const logEntries = $('#logs');
+              // Clear the container before appending new entries
+              logEntries.empty();
+              // Iterate over the log data
+              data.forEach((log) => {
+                // set h3 header
+                // Update the innerHTML to show the chosen UVU ID
+                $('#uvuIdDisplay').removeClass('d-none');
+                $('#uvuIdDisplay').addClass('pt-8 text-xl font-bold');
+                $('#uvuIdDisplay').show();
+                $('#uvuIdDisplay').html(`Student Logs for ${log.uvuId}`);
+                // Create a new list item
+                const logItem = $(`<li>`);
+
+                // Create the log date element
+                const logDate = $(`<div><small>${log.date}</small></div>`);
+                $('small').addClass(
+                  'text-lg font-semibold font-sans border-x-gray-300'
+                );
+
+                // Create the log text element
+                const logText = $(`<pre><p>${log.text}</p></pre>`);
+
+                // Append the date and text elements to the list item
+                logItem.append(logDate);
+                logItem.append(logText);
+                // Append the list item to the log entries container
+                logEntries.append(logItem);
+              });
+
+              // add css classes to new elements
+              $('.log-entries').addClass(
+                'p-2 bg-gray-100 border-2 border-solid block'
+              );
+              $('.log-entries li').addClass(
+                'rounded p-2 bg-gray-100 border-2 border-solid block'
+              );
+              $('div small').addClass(
+                'rounded text-base font-medium font-sans border-x-gray-300'
+              );
+              $('pre').addClass(
+                'rounded font-sans border-solid border-inherit whitespace-pre-wrap'
+              );
+
+              // re-activate addLog button
+              $('#addLog')
+                .prop('disabled', false)
+                .removeClass('opacity-20 cursor-not-allowed');
+              // display only log dates with on click event to view text entries list-items
+              $('.log-entries li').click(function () {
+                // text is queried from the <pre> -preformatted tag
+                $(this).find('pre').slideToggle();
+              });
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      event.preventDefault();
+      $('#logEntry').val('');
+    });
   });
-
-  // Make the paragragh data within the <pre> tags only visible on click of when clicked
-
-  // $('.log-entries li, .log-entries').click(function () {
-  //   //$(this).find('pre').toggleClass('active');
-  //   $(this).find('pre').toggle();
-  // });
 });

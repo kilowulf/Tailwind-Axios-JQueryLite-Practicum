@@ -3,11 +3,7 @@
   <head>
     <title>Student Log</title>
     <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="icon" href="./img/studentLog_flavicon.ico" type="image/x-icon" />
     <!-- Axios, JQuery CDN, Tailwind links -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -32,6 +28,7 @@
       m-10
       p-10
       box-border
+      bg-no-repeat
     "
   >
     <form class="text-centered rounded bg-white border border-gray-400 p-12">
@@ -62,6 +59,7 @@
       <label class="font-medium">New Log</label><br />
       <textarea
         class="rounded bg-gray-200 border border-gray-300 mb-1 p-10 w-full"
+        id="logEntry"
         style="height: 75px"
         aria-label="add log textarea"
         data-cy="log_textarea"
@@ -80,7 +78,7 @@
           focus:outline-none
         "
         id="addLog"
-        type="submit"
+        type="button"
         data-cy="add_log_btn"
       >
         Add Log
