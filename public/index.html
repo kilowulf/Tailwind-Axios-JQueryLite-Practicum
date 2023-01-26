@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <!-- TODO: set the lang attribute to American English -->
   <head>
     <title>Student Log</title>
-    <!-- TODO: set the characterset to utf8 -->
     <meta charset="UTF-8" />
-    <!-- TODO: temporarily use stackoverflow's favicon. "https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico"-->
     <link
       rel="icon"
       href="https://cdn.sstatic.net/Sites/stackoverflow/Img/favicon.ico"
       type="image/x-icon"
     />
-    <!-- TODO: Load your CSS file -->
+    <!-- Axios, JQuery CDN, Tailwind links -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="./style.css" /> -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body
@@ -47,24 +42,11 @@
         name="course"
         data-cy="course_select"
       >
-        <!-- TODO: The following options are currently static values to show you sample data.  -->
-        <!-- AJAX to replace them with dynamic data from GET https://json-server-ft3qa5--3000.local.webcontainer.io/api/v1/courses -->
-        <!-- NOTE: all AJAX in this project is via fetch -->
-        <!-- Use your own unique URL you recorded, not the sample one above. -->
-        <option selected value="">Choose Courses</option>
-
-        <!-- <option value="cs4690">CS 4690</option>
-        <option value="cs4660">CS 4660</option>
-        <option value="cs3380">CS 3380</option> --></select
+        <option selected value="">Choose Courses</option></select
       ><br />
 
-      <!-- TODO: Don't show the uvu id text input box until a course was selected above.  -->
-      <!-- TODO: If course ever becomes unselected, don't show the uvu id text input box.  -->
       <label class="font-medium" id="uvuIdLbl" for="uvuId">UVU ID</label><br />
-      <!-- TODO: write `10234567` as sample data on the input field below :  -->
-      <!-- TODO: Ensure the character length never exceeds 8  -->
-      <!-- TODO: Only numbers, no letters or other characters: -->
-      <!-- TODO: When character length reaches 8 and it's only digits, fire off ajax request, if 200 or 304, display results, else appropriately guide the user. -->
+
       <input
         class="rounded bg-white border-2 border-gray-400 p-2.5 pb-4 mb-3 w-full"
         type="text"
@@ -72,33 +54,11 @@
         name="uvuId"
         data-cy="uvuId_input"
       />
-      <!-- TODO: The following options are currently static values to show you an example.  -->
-      <!-- You must replace them with dynamic data by ajaxing GET https://json-server-ft3qa5--3000.local.webcontainer.io/logs?courseId=<courseID>&uvuId=<uvuID> -->
+
       <h3 class="d-none" id="uvuIdDisplay" data-cy="uvuIdDisplay">
         Student Logs for 10234567
       </h3>
-      <ul class="rounded log-entries mb-4 py-2" id="logs" data-cy="logs">
-        <!-- <li>
-          <div>
-            <small class="dateDiv"></small>
-          </div>
-          <pre><p id='entryP'></p></pre> -->
-        </li>
-
-        <!-- TODO: Click anywhere on the log to toggle visibility of the log (text only, not the date)-->
-        <!-- <li>
-          <div><small>1/23/2021 1:23:36 PM</small></div>
-          <pre><p>Initial comment. Hello World</p></pre>
-        </li>
-        <li>
-          <div><small>1/24/2021 2:43:12 PM</small></div>
-          <pre><p>MongoDB is looking really good, still need to get atlas up and running.</p></pre>
-        </li>
-        <li>
-          <div><small>1/27/2021 5:58:10 PM</small></div>
-          <pre><p>Atlas is up and running</p></pre>
-        </li> -->
-      </ul>
+      <ul class="rounded log-entries mb-4 py-2" id="logs" data-cy="logs"></ul>
       <label class="font-medium">New Log</label><br />
       <textarea
         class="rounded bg-gray-200 border border-gray-300 mb-1 p-10 w-full"
@@ -107,7 +67,7 @@
         data-cy="log_textarea"
       ></textarea
       ><br />
-      <!-- TODO: Button should be disabled until there are logs displayed -->
+
       <button
         class="
           bg-blue-500
@@ -126,10 +86,8 @@
         Add Log
       </button>
     </form>
-    <!-- TODO: Script tag to your javascript file -->
     <script src="script.js"></script>
   </body>
-  <!-- TODO: add appropriate comments you feel are necessary, if any, for the next coder to understand -->
 </html>
 
 <!-- TODO: move all TODOs that done above to down below here and change the label to DONE:. -->
