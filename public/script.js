@@ -42,7 +42,8 @@
 
 $(document).ready(function () {
   // Disable Add Log button until logs are displayed
-  $('#addLog').prop('disabled', true).addClass('opacity-20 cursor-not-allowed');
+  $('#addLog').prop('disabled', true).addClass('opacity-20');
+  $('#logEntry').prop('disabled', true).addClass('opacity-20');
 
   // styling for ul log entry box and containers
   $('select').addClass('rounded');
@@ -173,10 +174,9 @@ $(document).ready(function () {
               'rounded font-sans border-solid border-inherit whitespace-pre-wrap'
             );
 
-            // re-activate addLog button
-            $('#addLog')
-              .prop('disabled', false)
-              .removeClass('opacity-20 cursor-not-allowed');
+            // re-activate addLog button & textarea
+            $('#addLog').prop('disabled', false).removeClass('opacity-20');
+            $('#logEntry').prop('disabled', false).removeClass('opacity-20');
             // display only log dates with on click event to view text entries list-items
             $('.log-entries li').click(function () {
               // text is queried from the <pre> -preformatted tag
